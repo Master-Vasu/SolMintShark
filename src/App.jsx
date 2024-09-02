@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import { PublicKey } from '@solana/web3.js';
 import { createMint, getOrCreateAssociatedTokenAccount, mintTo } from '@solana/spl-token';
-import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+
 
 function App() {
     const { connection } = useConnection();
@@ -48,11 +48,10 @@ function App() {
 
     return (
         <div className="App">
-            <WalletMultiButton />
-            <button onClick={createToken} disabled={!publicKey}>
+            <button className='tokenButtons' onClick={createToken} disabled={!publicKey}>
                 Create Token
             </button>
-            <button onClick={mintTokens} disabled={!publicKey || !tokenAddress}>
+            <button className='tokenButtons' onClick={mintTokens} disabled={!publicKey || !tokenAddress}>
                 Mint Tokens
             </button>
             {tokenAddress && <p>Token Address: {tokenAddress}</p>}
